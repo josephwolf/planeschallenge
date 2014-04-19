@@ -1,4 +1,8 @@
+# require_relative 'weather.rb'
+
 class Spaceship
+
+	# include Weather
 
 	def initialize
 		@grounded = true
@@ -8,9 +12,13 @@ class Spaceship
 		@grounded
 	end
 
-	def takeoff!(station)
-		station.launch
-		@grounded = false
+	def takeoff_from!(station)
+		if safe_to_take_off?(@weather)
+			station.launch(self)
+			@grounded = false
+		else
+			return 'not safe!'
+		end
 	end
 
 	def land_at!(station)
@@ -18,4 +26,11 @@ class Spaceship
 		@grounded = true
 	end
 
+	def safe_to_take_off?(weather)
+		weather.clear?
+	end
+
+	def weather
+		@weather
+	end
 end
