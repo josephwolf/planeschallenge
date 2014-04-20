@@ -4,8 +4,10 @@ class Spaceship
 
 	# include Weather
 
-	def initialize
+	def initialize(weather)
+		@weather = weather
 		@grounded = true
+		puts "got weather from outside!"
 	end
 
 	def landed?
@@ -13,7 +15,7 @@ class Spaceship
 	end
 
 	def takeoff_from!(station)
-		if safe_to_take_off?(@weather)
+		if safe_to_take_off?
 			station.launch(self)
 			@grounded = false
 		else
@@ -26,11 +28,12 @@ class Spaceship
 		@grounded = true
 	end
 
-	def safe_to_take_off?(weather)
-		weather.clear?
+	def safe_to_take_off?
+		@weather.clear?
+		puts "checked if safe"
 	end
 
-	def weather
-		@weather
-	end
+	# def weather
+	# 	@weather
+	# end
 end

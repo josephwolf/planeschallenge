@@ -1,4 +1,4 @@
-module Weather
+class Weather
 	
 	def clear?
 		random

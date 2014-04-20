@@ -10,6 +10,7 @@ describe Weather do
 	end
 
 	xit 'can be asteroids outside' do
+		# allow(weather.random).to receive(:outcome) { 1 }
 		weather.asteroidy
 		expect(weather).not_to be_clear
 	end
