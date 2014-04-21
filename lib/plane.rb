@@ -12,8 +12,9 @@ class Spaceship
 		if station.clear_weather?
 			station.launch(self)
 			@grounded = false
+			return 'See you, space cowboy.'
 		else
-			return 'not safe!'
+			return 'NOT SAFE TO LAUNCH.'
 		end
 	end
 
@@ -21,8 +22,9 @@ class Spaceship
 		if station.clear_weather?
 			station.dock(self)
 			@grounded = true
+			return 'Welcome to #{station}!'
 		else
-			return 'not safe!'
+			return 'NOT SAFE TO LAND.'
 		end
 	end
 

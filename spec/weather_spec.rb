@@ -5,28 +5,23 @@ describe Weather do
 	let(:weather) { Weather.new }
 
 	it 'can be clear outside' do
-		weather.force_clear!
-		expect(weather.status).to be_true
+		srand(1)
+		expect(weather.clear?).to be_true
 	end
 
 	it 'can be not clear outside' do
-		weather.force_not_clear!
-		expect(weather.status).not_to be_true
+		srand(0)
+		expect(weather.clear?).not_to be_true
 	end
 
-	xit 'can be ranzomized!' do
-		expect(weather.clear?).to be_i_dont_fucking_know
-	end
+	# holy shit! it took some doing but I finally figured
+	# it out! by using the srand function I can fix the
+	# seed used by the sample function to get the same
+	# results of clear? every time. it takes some trial and 
+	# error to figure out what seed gets what but it works.
 
-		# this test is fucking up at random because
-		# of the nature of the class.
-		# testing the random method itself is a nightmare, but
-		# I have an idea. if I can make rspec to run a single
-		# test multiple times and then collect the results
-		# I can run the test, say, 1000 times and it'd be
-		# almost impossible not to get both possible outcomes.
-		# I could then test to see that all possible outcomes 
-		# were recieved. I have no idea HOW to do this, but it
-		# should work.
+	# I could refactor the weather into the station because
+	# it's basically just one line now, but I'll leave it to
+	# show how it evolved.
 
 end

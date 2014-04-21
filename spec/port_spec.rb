@@ -3,8 +3,8 @@ require 'port.rb'
 describe Spacestation do
 
 	let(:spaceship) { double :spaceship }
-	let(:weatherdouble) { double :weather, clear?: true }
-	let(:spacestation) { Spacestation.new(weatherdouble) }
+	let(:weather) { double :weather, clear?: true }
+	let(:spacestation) { Spacestation.new(weather) }
 
 	it 'starts with no spaceships' do
 		expect(spacestation.spaceships).to eq []

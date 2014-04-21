@@ -3,8 +3,8 @@ require 'plane.rb'
 describe Spaceship do
 
 	let(:weather) { double true }
-	let(:station) { double :spacestation, launch: :spaceship, dock: :spaceship, clear_weather?: weather }
 	let(:spaceship) { Spaceship.new }
+	let(:station) { double :spacestation, launch: :spaceship, dock: :spaceship, clear_weather?: weather }
 
 	it 'can be landed' do
 		expect(spaceship.landed?).to be_true
@@ -21,11 +21,17 @@ describe Spaceship do
 		expect(spaceship).to be_landed
 	end
 
-		# let(:station) { double :spacestation, launch: :spaceship, dock: :spaceship, clear_weather?: weatherdouble }
+
+	it 'does not land if weather is asteroids' do
+		station.stub(:clear_weather?){false}
+		spaceship.land_at!(station)
+		expect(spaceship.land_at!(station)).to eq 'NOT SAFE TO LAND.'
+	end 
 
 	it 'does not take off if weather is asteroids' do
-		expect(spaceship.takeoff_from!(station)).to eq 'not safe!'
-		let(:weatherdouble) { double false }
+		station.stub(:clear_weather?){false}
+		spaceship.takeoff_from!(station)
+		expect(spaceship.takeoff_from!(station)).to eq 'NOT SAFE TO LAUNCH.'
 	end 
 
 

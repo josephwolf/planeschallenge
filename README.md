@@ -1,4 +1,4 @@
 planeschallenge
 ===============
 
-NREEOOWWWW I'M AN AIRPLANE! :3
+So fresh. So fly. Wow.
