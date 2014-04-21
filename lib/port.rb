@@ -1,6 +1,7 @@
 class Spacestation
 
-	def initialize
+	def initialize(weather)
+		@weather = weather
 		@spaceships ||= []
 	end
 
@@ -14,6 +15,10 @@ class Spacestation
 
 	def launch(ship)
 		spaceships.delete(ship)
+	end
+
+	def clear_weather?
+		@weather.clear?
 	end
 
 end

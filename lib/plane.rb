@@ -1,13 +1,7 @@
-# require_relative 'weather.rb'
-
 class Spaceship
 
-	# include Weather
-
-	def initialize(weather)
-		@weather = weather
+	def initialize
 		@grounded = true
-		puts "got weather from outside!"
 	end
 
 	def landed?
@@ -15,7 +9,7 @@ class Spaceship
 	end
 
 	def takeoff_from!(station)
-		if safe_to_take_off?
+		if station.clear_weather?
 			station.launch(self)
 			@grounded = false
 		else
@@ -24,16 +18,12 @@ class Spaceship
 	end
 
 	def land_at!(station)
-		station.dock
-		@grounded = true
+		if station.clear_weather?
+			station.dock(self)
+			@grounded = true
+		else
+			return 'not safe!'
+		end
 	end
 
-	def safe_to_take_off?
-		@weather.clear?
-		puts "checked if safe"
-	end
-
-	# def weather
-	# 	@weather
-	# end
 end

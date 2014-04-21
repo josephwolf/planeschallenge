@@ -4,23 +4,21 @@ describe Weather do
 	
 	let(:weather) { Weather.new }
 
-	xit 'can be space outside' do
-		weather.spacey
-		expect(weather).to be_clear
+	it 'can be clear outside' do
+		weather.force_clear!
+		expect(weather.status).to be_true
 	end
 
-	xit 'can be asteroids outside' do
-		# allow(weather.random).to receive(:outcome) { 1 }
-		weather.asteroidy
-		expect(weather).not_to be_clear
+	it 'can be not clear outside' do
+		weather.force_not_clear!
+		expect(weather.status).not_to be_true
 	end
 
 	xit 'can be ranzomized!' do
-		weather.random
 		expect(weather.clear?).to be_i_dont_fucking_know
 	end
 
-		# these tests are fucking up at random because
+		# this test is fucking up at random because
 		# of the nature of the class.
 		# testing the random method itself is a nightmare, but
 		# I have an idea. if I can make rspec to run a single
